@@ -48,4 +48,12 @@ public class FakeAuctionServer {
     public void stop() {
         connection.disconnect();
     }
+
+    public void reportPrice(int int1, int int2, String str) {
+
+    }
+
+    public void hasReceivedBid(int int1, String str) {
+
+    }
 }
