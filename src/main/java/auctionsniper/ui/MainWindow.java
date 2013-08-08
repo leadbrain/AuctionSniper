@@ -20,6 +20,10 @@ public class MainWindow extends JFrame {
         setVisible(true);
     }
 
+    public void showStatus(String status) {
+        sniperStatus.setText(status);
+    }
+
     private static JLabel createLabel(String initialText) {
         JLabel result = new JLabel(initialText);
         result.setName(Main.SNIPER_STATUS_NAME);
