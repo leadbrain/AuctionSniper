@@ -13,17 +13,19 @@ import org.jivesoftware.smack.MessageListener;
 import org.jivesoftware.smack.packet.Message;
 
 public class SingleMessageListener implements MessageListener {
-	private final ArrayBlockingQueue<Message> messages = new ArrayBlockingQueue<Message>(
-			1);
+    private final ArrayBlockingQueue<Message> messages = new ArrayBlockingQueue<Message>(
+            1);
 
-	public void processMessage(Chat chat, Message message) {
-		messages.add(message);
-	}
+    @Override
+    public void processMessage(Chat chat, Message message) {
+        messages.add(message);
+    }
 
-	public void receivesAMessage(Matcher<? super String> messageMatcher)
-			throws InterruptedException {
-		final Message message = messages.poll(5, TimeUnit.SECONDS);
-		assertThat("Message", message, is(notNullValue()));
-		assertThat(message.getBody(), messageMatcher);
-	}
+    public void receivesAMessage(Matcher<? super String> messageMatcher)
+            throws InterruptedException {
+        final Message message = messages.poll(10, TimeUnit.SECONDS);
+        assertThat("Message", message, is(notNullValue()));
+        assertThat(message.getBody(), messageMatcher);
+
+    }
 }
