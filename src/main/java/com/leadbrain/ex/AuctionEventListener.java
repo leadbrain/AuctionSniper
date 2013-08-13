@@ -1,7 +1,13 @@
 package com.leadbrain.ex;
 
-public interface AuctionEventListener {
+import java.util.EventListener;
+
+public interface AuctionEventListener extends EventListener {
+	enum PriceSource {
+		FromSniper, FromOtherBidder;
+	};
+
 	abstract void auctionClosed();
 
-	abstract void currentPrice(int price, int increment);
+	abstract void currentPrice(int price, int increment, PriceSource priceSource);
 }
